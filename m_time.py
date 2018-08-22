@@ -8,7 +8,7 @@ class Time:
     current_time_str      = ''
     date = ''
     time = ''
-    #Constructor
+    #Constructor gets everything
     def __init__(self):
         self.current_time_str = str(self.current_time_datetime)
         self.date = self.current_time_str[:10]

@@ -14,7 +14,7 @@ RUN pip3 install --trusted-host pypi.python.org -r requirements.txt
 EXPOSE 80
 
 # Define environment variable
-ENV NAME HelloWorld
+ENV NAME duanaweather
 
 # Run app.py when the container launches
 CMD ["python3", "main.py"]

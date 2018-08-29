@@ -68,7 +68,11 @@ class Calendar:
         self.next_block = self.next_block[1:]
         self.next_block = self.next_block[:length-2]
         
-        #Get the time for next refresh
-        utc_time = datetime.datetime.strptime(start[refresh_index+1], "%Y-%m-%dT%H:%M:%SZ")
-        epoch = datetime.datetime.utcfromtimestamp(0)
-        self.refresh_time = (utc_time-epoch).total_seconds()
+        #Get the time for next refresh\
+        try: 
+            utc_time = datetime.datetime.strptime(start[refresh_index+1], "%Y-%m-%dT%H:%M:%SZ")
+            epoch = datetime.datetime.utcfromtimestamp(0)
+            self.refresh_time = (utc_time-epoch).total_seconds()
+        except:
+            print("Unable to retreive proper refresh time.")
+        

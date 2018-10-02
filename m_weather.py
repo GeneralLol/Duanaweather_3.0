@@ -18,9 +18,9 @@ class Weather:
     outputStr= '' # The one big string that contains all the info, separated by \n. 
     
     #Constructor. TODO: Have the constructor take city and state from the main module instead of being inputted here. 
-    def __init__(self):
-        self.city  = input("Please input city: \n>")
-        self.state = input("Please input 2-letter abbreviation of state: \n>")
+    def __init__(self, city, state):
+        self.city  = city
+        self.state = state
         self.url   = 'http://api.wunderground.com/api/386a8e8ab04d7748/conditions/q/'+self.state+'/'+self.city+'.json'
         self.location = self.city + ' ' + self.state
         

@@ -54,9 +54,11 @@ class Calendar:
                 refresh_index = index
                 refresh_counter = False
             index += 1
-        self.blocks.pop(0)
+        #self.blocks.pop(0)
         
         flag = False
+        #If the first char of the block string is "(", it is a class. Otherwise it is something else.
+        print (self.blocks[1]) 
         for i in self.blocks[1]:
             if i == '(':
                 flag = True
@@ -74,5 +76,7 @@ class Calendar:
             epoch = datetime.datetime.utcfromtimestamp(0)
             self.refresh_time = (utc_time-epoch).total_seconds()
         except:
-            print("Unable to retreive proper refresh time.")
+            raise ValueError("Wrong refresh time format")
         
+    def refresh(self):
+        self.get_upcoming_event()

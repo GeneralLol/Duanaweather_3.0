@@ -6,11 +6,13 @@ import sys
 import m_weather
 import m_time
 import m_calendar
+from time import sleep
 
 def main():
-    #instance the m_weather class
-    #TODO: Have the city and state inputed here instead of the class constructor
-    weather = m_weather.Weather()
+    #Input the city and state (TODO: work it into sys.argv)
+    city  = input ("Please input name of city:  \n>")
+    state = input ("Please input name of state: \n>")
+    weather = m_weather.Weather(city, state)
     time    = m_time.Time()
     calendar= m_calendar.Calendar()
     #Pull info from m_weather object
@@ -21,14 +23,19 @@ def main():
         print (msg)
         sys.exit()
 
-    print(weather.weather)
-    print(weather.temp)
-    print(weather.location)
-    print(time.date)
-    print(time.time)
-    print(calendar.next_block)
-    print(calendar.refresh_time)
-    
+    while (True): 
+        if (calendar.refresh_time <= time.current_time_float):
+            calendar.refresh()
+            
+        time.refresh()
+        print(weather.weather)
+        print(weather.temp)
+        print(weather.location)
+        print(time.date)
+        print(time.time)
+        print(calendar.next_block)
+        print(calendar.refresh_time)
+        sleep(1)
 
 if (__name__ == "__main__"):
     main()
